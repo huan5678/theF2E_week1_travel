@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.logo {
+  
+  background-image: url('./images/TAiWAN GO.svg');
+  background-repeat: no-repeat;
+}
