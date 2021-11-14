@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
-import useFetchData from "../components/useFetchData";
+import useFetchData from "../api/useFetchData";
 
 import dotUnselectIcon from '../images/Dot_unselect.svg';
 import dotSelectedIcon from '../images/Dot_selected.svg';
@@ -30,10 +30,11 @@ SwiperCore.use([Pagination, Navigation, Mousewheel]);
 
 const Lightbox = (props) => {
 
-  const [url,setUrl] = useState(`https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${props.data.city}?$top=${props.data.num}&$format=JSON`);
+  const params = `top=${props.data.num}&$format=JSON`;
+  const city = props.data.city;
+  console.log(city, params);
 
-  const { data, error, loading, doFetch } = useFetchData();
-
+  const [data, setData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [swiper, setSwiper] = useState(null);
 
@@ -61,12 +62,14 @@ const Lightbox = (props) => {
 
   useEffect(() => {
     if (swiper) {
-      swiper.on('slideChange', () => {
+      swiper.on("slideChange", () => {
         handleIndexChange(swiper.activeIndex);
       });
     }
-    doFetch(url);
-  }, [currentIndex, swiper]);
+    useFetchData("scenicSpot", city, params).then((res) => {
+      return setData(res.data);
+    });
+  });
 
   return (
     <Swiper
@@ -86,6 +89,20 @@ const Lightbox = (props) => {
         swiper.pagination.update();
       }}
     >
+      {data.map((item, idx) => {
+        return (
+          <SwiperSlide key={item.ID}>
+            <div
+              className="rounded-md flex justify-center items-center h-[185px] md:h-[400px] bg-center bg-no-repeat bg-cover"
+              style={{
+                backgroundImage: `url(${item.Picture.PictureUrl1})`,
+              }}
+            >
+              <p className="text-white md:text-2xl">{`${item.City} | ${item.Name}`}</p>
+            </div>
+          </SwiperSlide>
+        );
+      })}
 
       <div className="w-full px-5 md:px-10 hidden md:flex justify-between items-center absolute top-1/2 -translate-y-1/2 z-20">
         <div className="cursor-pointer">

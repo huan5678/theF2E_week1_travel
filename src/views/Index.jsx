@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import iconPin from "../images/spot24_Y.svg";
 import iconSearch from "../images/search30.svg";
 import Lightbox from "../components/LightBox";
-import useFetchData from "../components/useFetchData";
 
 
 const city = {
@@ -32,7 +31,7 @@ LC:"LienchiangCounty",
 }
 
 function Index() {
-  
+
     return (
       <main>
         <section className="pt-3 md:pt-20 pb-6">
