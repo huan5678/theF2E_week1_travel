@@ -2,9 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@layout base{
+  html,body{
+    @apply font-sans;
+  }
+}
 
 .logo {
-  
-  background-image: url('./images/TAiWAN GO.svg');
+  display: block;
   background-repeat: no-repeat;
+  background-size: cover;
+  text-indent: 101%;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 15rem;
+  height: 2rem;
+  background-image: url("./images/Logo-desktop.svg");
+}
+@media (max-width: 768px){
+.logo {
+  width: 7.375rem;
+  height: 1.875rem;
+  background-image: url("./images/Logo-mobile.svg");
+}
+}
+.font-heroSerif {
+  font-family: 'Playfair Display', serif;
 }
