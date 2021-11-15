@@ -106,7 +106,6 @@ const Lightbox = (props) => {
           </SwiperSlide>
         );
       })}
-      {currentIndex}
       <div className="w-full px-5 md:px-10 hidden md:flex justify-between items-center absolute top-1/2 -translate-y-1/2 z-20">
         <div className="cursor-pointer">
           <img

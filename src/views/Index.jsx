@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import iconPin from "../images/spot24_Y.svg";
 import iconSearch from "../images/search30.svg";
 import Lightbox from "../components/LightBox";
+import NewActivitiesList from "../components/NewActivitiesList";
+import PopRestaurant from "../components/PopRestaurant";
 
 
 const city = {
@@ -80,10 +82,12 @@ function Index() {
             </form>
           </div>
         </section>
-        <section className="pb-6">
-          <div className="container">
-            <Lightbox data={{ city: city.TP,num: 6 }} />
+        <section class="space-y-9">
+          <div className="container space-y-9">
+            <Lightbox data={{ city: city.TP, num: 6 }} />
+            <NewActivitiesList />
           </div>
+          <PopRestaurant />
         </section>
 
       </main>

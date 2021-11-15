@@ -53,6 +53,7 @@ module.exports = {
       borderRadius: {
         xs: "4px",
         DEFAULT: "5px",
+        nr: "8px",
         sm: "12px",
         md: "16px",
         lg: "20px",
@@ -68,6 +69,7 @@ module.exports = {
     require("@tailwindcss/forms"),
     require("@tailwindcss/typography"),
     require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/line-clamp"),
     function ({ addComponents }) {
       addComponents({
         ".container": {
