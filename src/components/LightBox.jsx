@@ -25,7 +25,6 @@ import SwiperCore, {
 
 SwiperCore.use([Pagination, Navigation, Mousewheel]);
 
-
 const Lightbox = (props) => {
   const [data, setData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -66,6 +65,15 @@ const Lightbox = (props) => {
         handleIndexChange(swiper.activeIndex);
       });
     }
+    const dotUnselect = document.querySelectorAll(".swiper-pagination-bullet>img");
+    const dotSelected = document.querySelector(
+      ".swiper-pagination-bullet-active>img"
+    );
+    dotUnselect.forEach((item) => {
+      item.src = dotUnselectIcon;
+    });
+    dotSelected.src = dotSelectedIcon;
+
   }, [currentIndex,swiper]);
 
   return (
@@ -73,11 +81,9 @@ const Lightbox = (props) => {
       spaceBetween={15}
       pagination={{
         clickable: true,
-        renderBullet: (idx, className) => {
-          return `<span class=${className}><img src=${
-            currentIndex === idx ? dotSelectedIcon : dotUnselectIcon
-          } /></span>`;
-        },
+        renderBullet: (idx, className) => `<span class=${className}><img src=${
+          currentIndex === idx ? dotSelectedIcon : dotUnselectIcon
+        } /></span>`,
       }}
       onInit={(swiper) => {
         handleSwiper(swiper);
@@ -100,7 +106,7 @@ const Lightbox = (props) => {
           </SwiperSlide>
         );
       })}
-
+      {currentIndex}
       <div className="w-full px-5 md:px-10 hidden md:flex justify-between items-center absolute top-1/2 -translate-y-1/2 z-20">
         <div className="cursor-pointer">
           <img
