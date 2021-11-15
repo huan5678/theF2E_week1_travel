@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
-import useFetchData from "../api/useFetchData";
+import FetchData from "../api/FetchData";
 
 import dotUnselectIcon from '../images/Dot_unselect.svg';
 import dotSelectedIcon from '../images/Dot_selected.svg';
@@ -56,7 +56,7 @@ const Lightbox = (props) => {
   useEffect(() => {
       const params = `top=${props.data.num}&$format=JSON`;
       const city = props.data.city;
-    useFetchData("scenicSpot", city, params).then((res) => setData(res.data));
+    FetchData("scenicSpot", city, params).then((res) => setData(res.data));
   },[]);
 
   useEffect(() => {
@@ -81,7 +81,7 @@ const Lightbox = (props) => {
       spaceBetween={15}
       pagination={{
         clickable: true,
-        renderBullet: (idx, className) => `<span class=${className}><img src=${
+        renderBullet: (idx, className) => `<span className=${className}><img src=${
           currentIndex === idx ? dotSelectedIcon : dotUnselectIcon
         } /></span>`,
       }}

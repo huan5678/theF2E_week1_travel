@@ -2,7 +2,7 @@ import React from 'react';
 import noImage255 from "../images/NoImage-255x200.png";
 import pinIcon from "../images/spot16.svg";
 
-const PopCard =  React.memo((props) => {
+const PopCard =  (props) => {
   const item = props.item;
   console.log(item);
   return  (
@@ -21,6 +21,6 @@ const PopCard =  React.memo((props) => {
       </p>
     </div>
   );
-})
+}
 
 export default PopCard;

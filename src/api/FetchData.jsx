@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
 import jsSHA from "jssha";
 
@@ -27,7 +26,7 @@ const requestOptions = () => {
 
 // console.log(requestOptions)
 
-const useFetchData = (url,city,params) => {
+const FetchData = (url,city,params) => {
   let category = "";
   switch (url) {
     case "scenicSpot":
@@ -54,4 +53,4 @@ const useFetchData = (url,city,params) => {
         headers: requestOptions(),
       });
 };
-export default useFetchData;
+export default FetchData;

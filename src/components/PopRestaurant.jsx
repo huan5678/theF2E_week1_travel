@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import PopCard from './popCard';
-import useFetchData from '../api/useFetchData';
+import FetchData from '../api/FetchData';
 import { IndexTitle } from "./IndexTitle";
 import Swiper from 'swiper';
 import { SwiperSlide } from 'swiper/react';
@@ -21,7 +21,7 @@ const PopRestaurant = () => {
   useEffect(() => {
     let city;
     const params = "$top=6&$format=JSON";
-    useFetchData("restaurant", city, params).then((res) => setData(res.data));
+    FetchData("restaurant", city, params).then((res) => setData(res.data));
     }, []);
 
 

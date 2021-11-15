@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import useFetchData from "../api/useFetchData";
+import FetchData from "../api/FetchData";
 import noImage160 from "../images/NoImage-160x160.png";
 import noImage255 from "../images/NoImage-255x200.png";
 import { IndexTitle } from "./IndexTitle";
 
-const NewActivitiesList = (props) => {
+const NewActivitiesList = () => {
   const [data, setData] = useState([]);
   //$filter=Picture%2FPictureUrl1%20ne%20null%20&$orderby=StartTime%20desc%2CUpdateTime&$top=4&$format=JSON
   useEffect(() => {
     let city;
     const params = `$filter=Picture%2FPictureUrl1%20ne%20null%20&$orderby=StartTime%20desc%2CUpdateTime&$top=4&$format=JSON`;
-    useFetchData("activity", city, params).then((res) => setData(res.data));
+    FetchData("activity", city, params).then((res) => setData(res.data));
   }, []);
   return (
     <section className="container">
