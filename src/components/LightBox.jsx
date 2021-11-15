@@ -26,14 +26,7 @@ import SwiperCore, {
 SwiperCore.use([Pagination, Navigation, Mousewheel]);
 
 
-
-
 const Lightbox = (props) => {
-
-  const params = `top=${props.data.num}&$format=JSON`;
-  const city = props.data.city;
-  console.log(city, params);
-
   const [data, setData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [swiper, setSwiper] = useState(null);
@@ -60,16 +53,20 @@ const Lightbox = (props) => {
     setCurrentIndex(index);
   };
 
+
+  useEffect(() => {
+      const params = `top=${props.data.num}&$format=JSON`;
+      const city = props.data.city;
+    useFetchData("scenicSpot", city, params).then((res) => setData(res.data));
+  },[]);
+
   useEffect(() => {
     if (swiper) {
       swiper.on("slideChange", () => {
         handleIndexChange(swiper.activeIndex);
       });
     }
-    useFetchData("scenicSpot", city, params).then((res) => {
-      return setData(res.data);
-    });
-  });
+  }, [currentIndex,swiper]);
 
   return (
     <Swiper
