@@ -4,8 +4,8 @@ import jsSHA from "jssha";
 const apiUrl = "https://ptx.transportdata.tw/MOTC/v2/Tourism";
 // https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$top=30&$format=JSON
 const requestOptions = () => {
-  let AppID = import.meta.env.VITE_APP_ID;
-  let AppKey = import.meta.env.VITE_APP_KEY;
+  let AppID = import.meta.env.VITE_APP_ID || process.env.VITE_APP_ID;
+  let AppKey = import.meta.env.VITE_APP_KEY || process.env.VITE_APP_KEY;
   let GMTString = new Date().toGMTString();
   let ShaObj = new jsSHA("SHA-1", "TEXT");
   ShaObj.setHMACKey(AppKey, "TEXT");
