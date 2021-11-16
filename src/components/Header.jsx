@@ -1,25 +1,10 @@
 import React,{ useState, useEffect} from "react"; 
 import { Link } from "react-router-dom";
 import menuBtn from '../images/menu-mobile.svg';
+import menuBtnClose from "../images/menu-mobile-close.svg";
 import ReactModal from "react-modal"
 
-const modal = {
-  position: "absolute",
-  top: "0%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-}
-
-const overlay = {
-  position: "fixed",
-  top: "0%",
-  left: "0%",
-  right: "0%",
-  bottom: "0%",
-  backgroundColor: "rgba(0,0,0,0.15)",
-  zIndex: "10",
-  backdropFilter: "blur(2px)",
-}
+import "./modal.css";
 
 const Header = () => {
   ReactModal.setAppElement("#root");
@@ -48,36 +33,44 @@ const Header = () => {
       <ReactModal
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
-        className={modal}
-        overlayClassName={overlay}
+        className="modal"
+        overlayClassName="overlay"
       >
-          <nav
-            className={`bg-white border border-gray-100 rounded space-y-4 transition duration-300 ${
-              isOpen ? "" : "opacity-0 invisible"
-            }`}
+        <div className="modal-content">
+          <div className="flex justify-between items-center pl-7">
+        <h2>
+          <Link to="/" className="logo">
+            台灣走走
+          </Link>
+            </h2>
+            <button onClick={() => setIsOpen(false)}>
+              <img src={menuBtnClose} alt="menuBtn" />
+            </button>
+          </div>
+        <nav>
+          <Link
+            className="block border-b border-gray-100 py-6 text-center"
+            to="/activity"
+            onClick={() => setIsOpen(!isOpen)}
           >
-            <Link
-              className="block border-b border-gray-100 py-3 px-8"
-              to="/activity"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              探索景點
-            </Link>
-            <Link
-              className="block border-b border-gray-100 py-3 px-8"
-              to="/restaurant"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              節慶活動
-            </Link>
-            <Link
-              className="block border-b border-gray-100 py-3 px-8"
-              to="/hotel"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              品嚐美食
-            </Link>
-          </nav>
+            探索景點
+          </Link>
+          <Link
+            className="block border-b border-gray-100 py-6 text-center"
+            to="/restaurant"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            節慶活動
+          </Link>
+          <Link
+            className="block py-6 text-center"
+            to="/hotel"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            品嚐美食
+          </Link>
+        </nav>
+        </div>
       </ReactModal>
     </header>
   );
