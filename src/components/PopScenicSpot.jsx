@@ -35,7 +35,7 @@ const PopRestaurant = () => {
   useEffect(async() => {
     let city;
     const params = "$top=6&$format=JSON";
-    const result = await FetchData("restaurant", city, params);
+    const result = await FetchData("scenicSpot", city, params);
     let random = getRandomArray(result.data, 5);
     setData(random);
   },[]);
@@ -43,7 +43,7 @@ const PopRestaurant = () => {
 
   return (
     <section className="container">
-        <IndexTitle props={{ title: "一再回訪美食", target: "/restaurant" }} />
+        <IndexTitle props={{ title: "熱門打卡景點", target: "/scenicSpot" }} />
       <Swiper
         spaceBetween={15}
         slidesPerView={2}

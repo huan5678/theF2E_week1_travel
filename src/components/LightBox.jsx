@@ -59,20 +59,26 @@ const Lightbox = (props) => {
     FetchData("scenicSpot", city, params).then((res) => setData(res.data));
   },[]);
 
+  const paginationCheck = () => {
+    const dotUnselect = document.querySelectorAll(".swiper-pagination-bullet>img");
+    const dotSelected = document.querySelector(
+      ".swiper-pagination-bullet-active>img"
+    );
+    if (dotSelected != undefined) {
+      dotUnselect.forEach((item) => {
+        item.src = dotUnselectIcon;
+      });
+    dotSelected.src = dotSelectedIcon;
+    }
+  }
+
   useEffect(() => {
     if (swiper) {
       swiper.on("slideChange", () => {
         handleIndexChange(swiper.activeIndex);
       });
     }
-    const dotUnselect = document.querySelectorAll(".swiper-pagination-bullet>img");
-    const dotSelected = document.querySelector(
-      ".swiper-pagination-bullet-active>img"
-    );
-    dotUnselect.forEach((item) => {
-      item.src = dotUnselectIcon;
-    });
-    dotSelected.src = dotSelectedIcon;
+    paginationCheck();
 
   }, [currentIndex,swiper]);
 

@@ -10,7 +10,7 @@ const NewActivitiesList = () => {
   //$filter=Picture%2FPictureUrl1%20ne%20null%20&$orderby=StartTime%20desc%2CUpdateTime&$top=4&$format=JSON
   useEffect(() => {
     let city;
-    const params = `$filter=Picture%2FPictureUrl1%20ne%20null%20&$orderby=StartTime%20desc%2CUpdateTime&$top=4&$format=JSON`;
+    const params = `$orderby=StartTime%20desc%2CUpdateTime&$top=4&$format=JSON`;
     FetchData("activity", city, params).then((res) => setData(res.data));
   }, []);
   return (
@@ -24,9 +24,7 @@ const NewActivitiesList = () => {
                 <img
                   className="max-h-16 w-24 object-cover object-center rounded-nr"
                   src={
-                    item.Picture.PictureUrl1
-                      ? item.Picture.PictureUrl1
-                      : noImage255
+                    item.Picture.PictureUrl1?? noImage255
                   }
                   alt={item.ActivityName}
                 />

@@ -1,12 +1,28 @@
 import React,{ useState, useEffect} from "react"; 
 import { Link } from "react-router-dom";
 import menuBtn from '../images/menu-mobile.svg';
+import ReactModal from "react-modal"
 
-function clsx(...args) {
-  return args.filter(Boolean).join(' ');
+const modal = {
+  position: "absolute",
+  top: "0%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+}
+
+const overlay = {
+  position: "fixed",
+  top: "0%",
+  left: "0%",
+  right: "0%",
+  bottom: "0%",
+  backgroundColor: "rgba(0,0,0,0.15)",
+  zIndex: "10",
+  backdropFilter: "blur(2px)",
 }
 
 const Header = () => {
+  ReactModal.setAppElement("#root");
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
   }, [isOpen]);
@@ -28,7 +44,13 @@ const Header = () => {
           <Link to="/restaurant">節慶活動</Link>
           <Link to="/hotel">品嚐美食</Link>
         </nav>
-        <div className="absolute top-full left-0 w-full px-4">
+      </div>
+      <ReactModal
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+        className={modal}
+        overlayClassName={overlay}
+      >
           <nav
             className={`bg-white border border-gray-100 rounded space-y-4 transition duration-300 ${
               isOpen ? "" : "opacity-0 invisible"
@@ -56,8 +78,7 @@ const Header = () => {
               品嚐美食
             </Link>
           </nav>
-        </div>
-      </div>
+      </ReactModal>
     </header>
   );
 }

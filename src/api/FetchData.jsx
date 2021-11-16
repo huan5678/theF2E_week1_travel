@@ -26,7 +26,7 @@ const requestOptions = () => {
 
 // console.log(requestOptions)
 
-const FetchData = (url,city,params) => {
+const FetchData = async (url,city,params) => {
   let category = "";
   switch (url) {
     case "scenicSpot":
@@ -46,11 +46,17 @@ const FetchData = (url,city,params) => {
       break;
   }
   return !city
-    ? axios.get(`${apiUrl}/${category}?$${params}`, {
-        headers: requestOptions(),
-      })
-    : axios.get(`${apiUrl}/${category}/${city}?$${params}`, {
-        headers: requestOptions(),
-      });
+    ? await axios.get(
+        `${apiUrl}/${category}?$filter=Picture%2FPictureUrl1%20ne%20null%20&$${params}`,
+        {
+          headers: requestOptions(),
+        }
+      )
+    : await axios.get(
+        `${apiUrl}/${category}/${city}?$filter=Picture%2FPictureUrl1%20ne%20null%20&$${params}`,
+        {
+          headers: requestOptions(),
+        }
+      );
 };
 export default FetchData;

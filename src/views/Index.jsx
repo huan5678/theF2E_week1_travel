@@ -5,6 +5,7 @@ import iconSearch from "../images/search30.svg";
 import Lightbox from "../components/LightBox";
 import NewActivitiesList from "../components/NewActivitiesList";
 import PopRestaurant from "../components/PopRestaurant";
+import PopScenicSpot from "../components/PopScenicSpot";
 
 
 const city = {
@@ -82,11 +83,12 @@ function Index() {
             </form>
           </div>
         </section>
-        <section class="space-y-9">
+        <section className="space-y-9 mb-20">
           <div className="container space-y-9">
             <Lightbox data={{ city: city.TP, num: 6 }} />
             <NewActivitiesList />
           </div>
+          <PopScenicSpot />
           <PopRestaurant />
         </section>
 
