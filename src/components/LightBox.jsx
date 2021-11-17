@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import FetchData from "../api/FetchData";
+import getRandomArray from "./getRandomArray";
 
 import dotUnselectIcon from '../images/Dot_unselect.svg';
 import dotSelectedIcon from '../images/Dot_selected.svg';
@@ -25,7 +26,7 @@ import SwiperCore, {
 
 SwiperCore.use([Pagination, Navigation, Mousewheel]);
 
-const Lightbox = (props) => {
+const Lightbox = () => {
   const [data, setData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [swiper, setSwiper] = useState(null);
@@ -53,10 +54,12 @@ const Lightbox = (props) => {
   };
 
 
-  useEffect(() => {
-      const params = `top=${props.data.num}&$format=JSON`;
-      const city = props.data.city;
-    FetchData("scenicSpot", city, params).then((res) => setData(res.data));
+  useEffect(async() => {
+      const params = `$format=JSON`;
+      let city;
+      const result = await FetchData("scenicSpot", city, params);
+      let random = getRandomArray(result.data, 6);
+    setData(random);
   },[]);
 
   const paginationCheck = () => {
@@ -79,7 +82,6 @@ const Lightbox = (props) => {
       });
     }
     paginationCheck();
-
   }, [currentIndex,swiper]);
 
   return (
@@ -87,9 +89,10 @@ const Lightbox = (props) => {
       spaceBetween={15}
       pagination={{
         clickable: true,
-        renderBullet: (idx, className) => `<span className=${className}><img src=${
-          currentIndex === idx ? dotSelectedIcon : dotUnselectIcon
-        } /></span>`,
+        renderBullet: (idx, className) =>
+          `<span className=${className}><img src=${
+            currentIndex === idx ? dotSelectedIcon : dotUnselectIcon
+          } /></span>`,
       }}
       onInit={(swiper) => {
         handleSwiper(swiper);
@@ -113,7 +116,11 @@ const Lightbox = (props) => {
         );
       })}
       <div className="w-full px-5 md:px-10 hidden md:flex justify-between items-center absolute top-1/2 -translate-y-1/2 z-20">
-        <div className="cursor-pointer">
+        <div
+          className={`${
+            currentIndex === 0 ? "" : "cursor-pointer"
+          }`}
+        >
           <img
             id="arrowLeftIcon"
             src={currentIndex === 0 ? arrowLeftDisIcon : arrowLeftIcon}
@@ -133,7 +140,11 @@ const Lightbox = (props) => {
             draggable="false"
           />
         </div>
-        <div className="cursor-pointer">
+        <div
+          className={`${
+            currentIndex === data.length - 1 ? "" : "cursor-pointer"
+          }`}
+        >
           <img
             id="arrowRightIcon"
             src={

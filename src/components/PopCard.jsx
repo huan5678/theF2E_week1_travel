@@ -11,7 +11,7 @@ const PopCard = (item) => {
           alt={item.Name}
         />
       </div>
-      <h3 className="font-bold text-gray-500 text-lg mb-4">{item.Name}</h3>
+      <h3 className="font-bold text-gray-500 text-lg mb-4 line-clamp-1">{item.Name}</h3>
       <p className="flex">
         <img className="mr-1" src={pinIcon} alt={item.Name} />
         <span className="text-gray">{item.City}</span>

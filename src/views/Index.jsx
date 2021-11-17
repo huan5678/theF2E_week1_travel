@@ -9,7 +9,7 @@ import PopScenicSpot from "../components/PopScenicSpot";
 
 
 const city = {
-  TP:"Taipei",
+TP:"Taipei",
 NTP:"NewTaipei",
 TY:"Taoyuan",
 TC:"Taichung",
@@ -85,7 +85,7 @@ function Index() {
         </section>
         <section className="space-y-9 mb-20">
           <div className="container space-y-9">
-            <Lightbox data={{ city: city.TP, num: 6 }} />
+            <Lightbox />
             <NewActivitiesList />
           </div>
           <PopScenicSpot />

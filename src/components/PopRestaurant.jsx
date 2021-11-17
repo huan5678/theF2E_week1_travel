@@ -6,7 +6,7 @@ import { Swiper,SwiperSlide } from 'swiper/react';
 import SwiperCore, { Mousewheel } from "swiper";
 import noImage255 from "../images/NoImage-255x200.png";
 import pinIcon from "../images/spot16.svg";
-
+import getRandomArray from "./getRandomArray";
 
 SwiperCore.use([Mousewheel]);
 import "swiper/css";
@@ -19,24 +19,12 @@ const PopRestaurant = () => {
     setSwiper(swiper);
   };
 
-  const getRandomArray = (arr, num) => {
-    let result = [];
-    let index = 0;
-    while (index < num) {
-      let random = Math.floor(Math.random() * arr.length);
-      if (result.indexOf(arr[random]) === -1) {
-        result.push(arr[random]);
-        index++;
-      }
-    }
-    return result;
-  }
 
   useEffect(async() => {
     let city;
     const params = "$top=6&$format=JSON";
     const result = await FetchData("restaurant", city, params);
-    let random = getRandomArray(result.data, 5);
+    let random = getRandomArray(result.data, 6);
     setData(random);
   },[]);
 
