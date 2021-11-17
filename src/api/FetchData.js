@@ -47,13 +47,13 @@ const FetchData = async (url,city,params) => {
   }
   return !city
     ? await axios.get(
-        `${apiUrl}/${category}?$filter=Picture%2FPictureUrl1%20ne%20null%20&$${params}`,
+        `${apiUrl}/${category}?$filter=Picture%2FPictureUrl1%20ne%20null%20&${params}&$format=JSON`,
         {
           headers: requestOptions(),
         }
       )
     : await axios.get(
-        `${apiUrl}/${category}/${city}?$filter=Picture%2FPictureUrl1%20ne%20null%20&$${params}`,
+        `${apiUrl}/${category}/${city}?$filter=Picture%2FPictureUrl1%20ne%20null%20&$${params}&$format=JSON`,
         {
           headers: requestOptions(),
         }

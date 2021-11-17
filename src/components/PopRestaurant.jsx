@@ -22,7 +22,7 @@ const PopRestaurant = () => {
 
   useEffect(async() => {
     let city;
-    const params = "$top=6&$format=JSON";
+    const params = "";
     const result = await FetchData("restaurant", city, params);
     let random = getRandomArray(result.data, 6);
     setData(random);

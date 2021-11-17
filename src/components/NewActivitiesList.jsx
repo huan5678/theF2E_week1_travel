@@ -10,7 +10,7 @@ const NewActivitiesList = () => {
   //$filter=Picture%2FPictureUrl1%20ne%20null%20&$orderby=StartTime%20desc%2CUpdateTime&$top=4&$format=JSON
   useEffect(() => {
     let city;
-    const params = `$orderby=StartTime%20desc%2CUpdateTime&$top=4&$format=JSON`;
+    const params = `$orderby=StartTime%20desc%2CUpdateTime&$top=4`;
     FetchData("activity", city, params).then((res) => setData(res.data));
   }, []);
   return (

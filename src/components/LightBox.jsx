@@ -56,7 +56,7 @@ const Lightbox = () => {
 
 
   useEffect(async() => {
-      const params = `$format=JSON`;
+      const params = "";
       let city;
       const result = await FetchData("scenicSpot", city, params);
       let random = getRandomArray(result.data, 6);
