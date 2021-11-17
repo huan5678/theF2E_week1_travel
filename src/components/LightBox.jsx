@@ -22,9 +22,10 @@ import SwiperCore, {
   Navigation,
   Pagination,
   Mousewheel,
+  Autoplay,
 } from "swiper";
 
-SwiperCore.use([Pagination, Navigation, Mousewheel]);
+SwiperCore.use([Pagination, Navigation, Mousewheel, Autoplay]);
 
 const Lightbox = () => {
   const [data, setData] = useState([]);
@@ -99,6 +100,10 @@ const Lightbox = () => {
         swiper.navigation.init();
         swiper.navigation.update();
         swiper.pagination.update();
+      }}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
       }}
     >
       {data.map((item, idx) => {
