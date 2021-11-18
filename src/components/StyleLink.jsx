@@ -7,7 +7,7 @@ export function StyleLink({ ...props }) {
     <div>
       <Link
         className={`relative hover:before:absolute hover:${item.color} hover:before:border-b hover:${item.border} hover:before:translate-y-1 hover:before:w-full hover:before:h-full hover:before:content-[''] hover:before:top-0 hover:before:left-0 transition-all duration-500`}
-        to={item.link}
+        to={item.href}
       >
         {item.title}
       </Link>

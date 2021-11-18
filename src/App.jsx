@@ -4,6 +4,7 @@ import { renderRoutes } from "react-router-config";
 import routes from "@/router";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+
 function App() {
   return (
     <BrowserRouter>

@@ -8,31 +8,6 @@ import PopRestaurant from "../components/PopRestaurant";
 import PopScenicSpot from "../components/PopScenicSpot";
 
 
-const city = {
-TP:"Taipei",
-NTP:"NewTaipei",
-TY:"Taoyuan",
-TC:"Taichung",
-TN:"Tainan",
-KS:"Kaohsiung",
-KL:"Keelung",
-HC:"Hsinchu",
-HCC:"HsinchuCounty",
-ML:"MiaoliCounty",
-CH:"ChanghuaCounty",
-NT:"NantouCounty",
-YL:"YunlinCounty",
-CYC:"ChiayiCounty",
-CY:"Chiayi",
-PT:"PingtungCounty",
-YI:"YilanCounty",
-HL:"HualienCounty",
-TT:"TaitungCounty",
-KM:"KinmenCounty",
-PH:"PenghuCounty",
-LC:"LienchiangCounty",
-}
-
 function Index() {
 
     return (
