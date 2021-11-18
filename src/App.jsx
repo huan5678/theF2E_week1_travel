@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 function App() {
   return (
-      <BrowserRouter>
+    <BrowserRouter>
         <Header />
       <Switch>{renderRoutes(routes)}</Switch>
       <Footer />
