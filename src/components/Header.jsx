@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import menuBtn from "../images/menu-mobile.svg";
-import menuBtnClose from "../images/menu-mobile-close.svg";
 import ReactModal from "react-modal";
 import { StyleLink } from "./StyleLink";
+import { iconContext } from "../context/Context";
 
 import "./modal.css";
 
 const Header = () => {
+  const { menuBtn, menuBtnClose } = useContext(iconContext);
   ReactModal.setAppElement("#root");
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {}, [isOpen]);

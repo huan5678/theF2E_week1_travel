@@ -1,18 +1,19 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect , useContext} from 'react';
 // import PopCard from './popCard';
 import FetchData from '../api/FetchData';
 import { IndexTitle } from "./IndexTitle";
 import { Swiper,SwiperSlide } from 'swiper/react';
 import SwiperCore, { Mousewheel } from "swiper";
-import noImage255 from "../images/NoImage-255x200.png";
-import pinIcon from "../images/spot16.svg";
 import getRandomArray from "./getRandomArray";
+
+import { iconContext } from "../context/Context";
 
 SwiperCore.use([Mousewheel]);
 import "swiper/css";
 
 
 const PopRestaurant = () => {
+  const { pinIcon, noImage255 } = useContext(iconContext);
   const [data, setData] = useState([]);
   const [swiper, setSwiper] = useState(null);
   const handleSwiper = (swiper) => {

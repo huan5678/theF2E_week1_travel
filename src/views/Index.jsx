@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
-import iconPin from "../images/spot24_Y.svg";
-import iconSearch from "../images/search30.svg";
 import Lightbox from "../components/LightBox";
 import NewActivitiesList from "../components/NewActivitiesList";
 import PopRestaurant from "../components/PopRestaurant";
 import PopScenicSpot from "../components/PopScenicSpot";
-
+import {iconContext } from "../context/Context"
 
 function Index() {
-
+  const { iconPin, iconSearch } = useContext(iconContext);
+  
     return (
       <main>
         <section className="pt-3 md:pt-20 pb-6">

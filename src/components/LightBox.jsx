@@ -1,16 +1,9 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import FetchData from "../api/FetchData";
 import getRandomArray from "./getRandomArray";
+import { iconContext } from "../context/Context";
 
-import dotUnselectIcon from '../images/Dot_unselect.svg';
-import dotSelectedIcon from '../images/Dot_selected.svg';
-import arrowLeftIcon from '../images/Arrow-Left.svg';
-import arrowLeftDisIcon from '../images/Arrow-Left_disable.svg';
-import arrowLeftHoverIcon from '../images/Arrow-Left_hover.svg';
-import arrowRightIcon from '../images/Arrow-Right.svg';
-import arrowRightDisIcon from '../images/Arrow-Right_disable.svg';
-import arrowRightHoverIcon from '../images/Arrow-Right_hover.svg';
 
 
 import "swiper/css";
@@ -28,6 +21,16 @@ import SwiperCore, {
 SwiperCore.use([Pagination, Navigation, Mousewheel, Autoplay]);
 
 const Lightbox = () => {
+  const {
+    arrowLeftIcon,
+    arrowLeftDisIcon,
+    arrowLeftHoverIcon,
+    arrowRightIcon,
+    arrowRightDisIcon,
+    arrowRightHoverIcon,
+    dotSelectedIcon,
+    dotUnselectIcon,
+  } = useContext(iconContext);
   const [data, setData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [swiper, setSwiper] = useState(null);
