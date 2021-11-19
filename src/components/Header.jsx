@@ -71,21 +71,21 @@ const Header = () => {
           <nav>
             <Link
               className="block border-b border-gray-100 py-6 text-center"
-              to="/activity"
+              to="/scenic"
               onClick={() => setIsOpen(!isOpen)}
             >
               探索景點
             </Link>
             <Link
               className="block border-b border-gray-100 py-6 text-center"
-              to="/restaurant"
+              to="/activity"
               onClick={() => setIsOpen(!isOpen)}
             >
               節慶活動
             </Link>
             <Link
               className="block py-6 text-center"
-              to="/hotel"
+              to="/restaurant"
               onClick={() => setIsOpen(!isOpen)}
             >
               品嚐美食
